@@ -1,0 +1,33 @@
+PROCEDURE do_product(VAR ps=0:INTEGER;v1,v2 : ARRAY_OF INTEGER[2];)
+
+BEGIN
+    ps=v1[0]*v2[0]+v1[1]*v2[1]
+END
+
+ALGORITHM checkpoint3_with_procedure
+VAR
+    ps:INTEGER;
+    v1,v2:ARRAY_OF INTEGER[2];
+    N:INTEGER;
+    i,j:INTEGER;
+BEGIN
+    WRite('Give a value of N')
+    WHILE (N>0) DO
+        Read(N)
+    END_WHILE
+    
+    IF (N%2=0) THEN //N:paire
+        FOR i FROM 0 TO N-1 STEP  DO
+            FOR j FROM 0 TO N-1  DO
+                Read(v1)
+                Read(v2)
+            END_FOR
+                do_product(ps,v1,v2)
+                IF (ps=0) THEN
+                    WRite('v1 and v2 are Orthogonal')
+                else
+                WRite('v1 and v2 are not Orthogonal')
+                END_IF
+        END_FOR
+    END_IF
+END
